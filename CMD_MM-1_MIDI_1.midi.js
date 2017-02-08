@@ -51,19 +51,19 @@ BehringerCMDMM1.PFLUpdate = function (value, group, control) {
 BehringerCMDMM1.PlayIndicatorUpdate = function (value, group, control) {
     switch(group) {
         case "[Channel1]":
-            midi.sendShortMsg(0x94, 0x14, value); // Channel 1, 2
+            midi.sendShortMsg(0x94, 0x18, value); // Channel 1, 2
             break;
 
         case "[Channel2]":
-            midi.sendShortMsg(0x94, 0x18, value); // Channel 2, 2
+            midi.sendShortMsg(0x94, 0x1C, value); // Channel 2, 2
             break;
 
         case "[Channel3]":
-            midi.sendShortMsg(0x94, 0x1C, value); // Channel 3, 2
+            midi.sendShortMsg(0x94, 0x14, value); // Channel 3, 2
             break;
 
         case "[Channel4]":
-            midi.sendShortMsg(0x94, 0x1F, value); // Channel 4, 2
+            midi.sendShortMsg(0x94, 0x20, value); // Channel 4, 2
             break;
     }
 }
@@ -79,18 +79,22 @@ BehringerCMDMM1.initLEDs = function () {
 //    midi.sendShortMsg(0x94, 0x10, 0x01); // Left Button  // Doesn't Work?
 //    midi.sendShortMsg(0x94, 0x11, 0x01); // Right Button // Doesn't Work?
 
+    // Disk 3
     midi.sendShortMsg(0x94, 0x13, 0x00); // Channel 1, 1
     midi.sendShortMsg(0x94, 0x14, 0x00); // Channel 1, 2
     midi.sendShortMsg(0x94, 0x30, 0x00); // Channel 1, Que
 
+    // Disk 1
     midi.sendShortMsg(0x94, 0x17, 0x00); // Channel 2, 1
     midi.sendShortMsg(0x94, 0x18, 0x00); // Channel 2, 2
     midi.sendShortMsg(0x94, 0x31, 0x00); // Channel 2, Que
 
+    // Disk 2
     midi.sendShortMsg(0x94, 0x1B, 0x00); // Channel 3, 1
     midi.sendShortMsg(0x94, 0x1C, 0x00); // Channel 3, 2
     midi.sendShortMsg(0x94, 0x32, 0x00); // Channel 3, Que
 
+    // Disk 4
     midi.sendShortMsg(0x94, 0x1F, 0x00); // Channel 4, 1
     midi.sendShortMsg(0x94, 0x20, 0x00); // Channel 4, 2
     midi.sendShortMsg(0x94, 0x33, 0x00); // Channel 4, Que
