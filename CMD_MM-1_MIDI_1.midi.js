@@ -68,6 +68,27 @@ BehringerCMDMM1.PlayIndicatorUpdate = function (value, group, control) {
     }
 }
 
+BehringerCMDMM1.LoadIndicatorUpdate = function (value, group, control) {
+    switch(group) {
+        case "[Channel1]":
+            midi.sendShortMsg(0x94, 0x17, value); // Channel 1, 2
+            break;
+
+        case "[Channel2]":
+            midi.sendShortMsg(0x94, 0x1B, value); // Channel 2, 2
+            break;
+
+        case "[Channel3]":
+            midi.sendShortMsg(0x94, 0x13, value); // Channel 3, 2
+            break;
+
+        case "[Channel4]":
+            midi.sendShortMsg(0x94, 0x1F, value); // Channel 4, 2
+            break;
+    }
+}
+
+
 BehringerCMDMM1.initLEDs = function () {
     // (re)Initialise any LEDs that are direcctly controlled by this script.
     print("CMD MM-1: Setting LEDs");
@@ -119,6 +140,14 @@ BehringerCMDMM1.init = function () {
     engine.connectControl("[Channel2]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
     engine.connectControl("[Channel3]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
     engine.connectControl("[Channel4]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
+
+    // Indicate when there is a loaded track
+    // Added 2.1.0 - Currently have 2.0.0 :(
+//    engine.connectControl("[Channel1]", "track_loaded", "BehringerCMDMM1.LoadIndicatorUpdate");
+//    engine.connectControl("[Channel2]", "track_loaded", "BehringerCMDMM1.LoadIndicatorUpdate");
+//    engine.connectControl("[Channel3]", "track_loaded", "BehringerCMDMM1.LoadIndicatorUpdate");
+//    engine.connectControl("[Channel4]", "track_loaded", "BehringerCMDMM1.LoadIndicatorUpdate");
+
 }
 
 BehringerCMDMM1.shutdown = function () {
