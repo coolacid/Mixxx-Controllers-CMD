@@ -15,7 +15,7 @@ BaseChannel = 0;
 
 // ************************ Initialisation stuff. *****************************
 
-BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
+BehringerCMDPL1.FindChannel = function(group) {
     // Identify the channel
     switch(group) {
         case "[Channel1]":
@@ -34,7 +34,12 @@ BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
             Channel = 0x90 + BaseChannel + 3
             break;
     }
+    return Channel;
+}
+
+BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
     // Identify the button
+    Channel = BehringerCMDPL1.FindChannel(group);
     switch(control) {
         case "cue_indicator":
             Button = 0x22;
@@ -84,9 +89,10 @@ BehringerCMDPL1.initLEDs = function () {
         midi.sendShortMsg(0x90 + Channel, 0x25, 0x00); // Button: >>
         midi.sendShortMsg(0x90 + Channel, 0x26, 0x00); // Button: -
         midi.sendShortMsg(0x90 + Channel, 0x27, 0x00); // Button: +
-
     }
 }
+
+
 
 BehringerCMDPL1.init = function () {
     // Initialise anything that might not be in the correct state.
