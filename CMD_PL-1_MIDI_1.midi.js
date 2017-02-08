@@ -10,9 +10,42 @@ function BehringerCMDPL1() {};
 
 // ***************************** Global Vars **********************************
 
+BaseChannel = 0;
 
 
 // ************************ Initialisation stuff. *****************************
+
+BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
+    // Identify the channel
+    switch(group) {
+        case "[Channel1]":
+            Channel = 0x90 + BaseChannel + 0
+            break;
+
+        case "[Channel2]":
+            Channel = 0x90 + BaseChannel + 0
+            break;
+
+        case "[Channel3]":
+            Channel = 0x90 + BaseChannel + 0
+            break;
+
+        case "[Channel4]":
+            Channel = 0x90 + BaseChannel + 0
+            break;
+    }
+    // Identify the button
+    switch(control) {
+        case "cue_indicator":
+            Button = 0x22;
+            break;
+        case "play_indicator":
+            Button = 0x23;
+            break;
+    }
+    // Send the message
+    midi.sendShortMsg(Channel, Button, value);
+}
 
 BehringerCMDPL1.initLEDs = function () {
     // (re)Initialise any LEDs that are direcctly controlled by this script.
@@ -58,6 +91,17 @@ BehringerCMDPL1.initLEDs = function () {
 BehringerCMDPL1.init = function () {
     // Initialise anything that might not be in the correct state.
     BehringerCMDPL1.initLEDs();
+
+    engine.connectControl("[Channel1]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
+    engine.connectControl("[Channel2]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
+    engine.connectControl("[Channel3]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
+    engine.connectControl("[Channel4]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
+
+    engine.connectControl("[Channel1]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
+    engine.connectControl("[Channel2]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
+    engine.connectControl("[Channel3]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
+    engine.connectControl("[Channel4]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
+
 }
 
 BehringerCMDPL1.shutdown = function () {
