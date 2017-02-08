@@ -63,6 +63,15 @@ BehringerCMDPL1.HandleRateSlider = function (channel, control, value, status, gr
     engine.setValue("[Channel"+(channel+1)+"]", "rate", CorrectedValue);
 }
 
+BehringerCMDPL1.HandleDisk = function (channel, control, value, status, group) {
+    CorrectedValue = value - 0x40;
+    if (engine.isScratching(channel+1)) {
+        engine.scratchTick(channel+1, CorrectedValue); // Scratch!
+    } else {
+        engine.setValue('[Channel'+(channel+1)+']', 'jog', CorrectedValue); // Pitch bend
+    }
+}
+
 BehringerCMDPL1.RateIndicatorUpdate = function (value, group, control) {
     Channel = BehringerCMDPL1.FindChannel(group, 0xB0);
     CorrectedValue = BehringerCMDPL1.Scale(value, -1, 1, 1, 16 );

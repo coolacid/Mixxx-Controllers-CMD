@@ -17,24 +17,6 @@
                 </options>
             </control>
             <control>
-                <group></group>
-                <key>BehringerCMDPL1.HandleRateSlider</key>
-                <status>0xE2</status>
-                <midino>0x00</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>BehringerCMDPL1.HandleRateSlider</key>
-                <status>0xE3</status>
-                <midino>0x00</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
                 <group>[Channel1]</group>
                 <key>cue_default</key>
                 <description>MIDI Learned from 8 messages.</description>
@@ -42,6 +24,15 @@
                 <midino>0x22</midino>
                 <options>
                     <normal/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleDisk</key>
+                <status>0xB0</status>
+                <midino>0x1F</midino>
+                <options>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -66,6 +57,22 @@
                 <group></group>
                 <key>BehringerCMDPL1.HandleRateSlider</key>
                 <status>0xE1</status>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleRateSlider</key>
+                <status>0xE2</status>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleRateSlider</key>
+                <status>0xE3</status>
                 <options>
                     <script-binding/>
                 </options>
