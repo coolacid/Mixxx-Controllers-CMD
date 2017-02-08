@@ -12,6 +12,7 @@ function BehringerCMDPL1() {};
 
 BaseChannel = 0;
 
+Button_Scratch = 0x1B;
 
 // ************************ Initialisation stuff. *****************************
 
@@ -35,6 +36,22 @@ BehringerCMDPL1.FindChannel = function(group) {
             break;
     }
     return Channel;
+}
+
+BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status, group) {
+    Channel = 0x90 + BaseChannel + channel;
+    if (status === 0x90) {
+        if (engine.isScratching(channel+1)) {
+            engine.scratchDisable(channel+1);
+            value = 0x00;
+        } else {
+            var alpha = 1.0/8;
+            var beta = alpha/32;
+            engine.scratchEnable(channel+1, 128, 33+1/3, alpha, beta);
+            value = 0x01;
+        }
+        midi.sendShortMsg(Channel, Button_Scratch, value);
+    }
 }
 
 BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {

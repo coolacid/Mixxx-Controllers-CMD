@@ -2,8 +2,19 @@
 <MixxxControllerPreset mixxxVersion="" schemaVersion="1">
     <info/>
     <controller id="CMD">
-        <scriptfiles/>
+        <scriptfiles>
+            <file functionprefix="BehringerCMDPL1" filename="CMD_PL-1_MIDI_1.midi.js"/>
+        </scriptfiles>
         <controls>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleScratchButton</key>
+                <status>0x90</status>
+                <midino>0x1B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
             <control>
                 <group>[Channel1]</group>
                 <key>sync_enabled</key>
