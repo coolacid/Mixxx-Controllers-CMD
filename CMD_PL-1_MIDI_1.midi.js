@@ -23,15 +23,15 @@ BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
             break;
 
         case "[Channel2]":
-            Channel = 0x90 + BaseChannel + 0
+            Channel = 0x90 + BaseChannel + 1
             break;
 
         case "[Channel3]":
-            Channel = 0x90 + BaseChannel + 0
+            Channel = 0x90 + BaseChannel + 2
             break;
 
         case "[Channel4]":
-            Channel = 0x90 + BaseChannel + 0
+            Channel = 0x90 + BaseChannel + 3
             break;
     }
     // Identify the button
