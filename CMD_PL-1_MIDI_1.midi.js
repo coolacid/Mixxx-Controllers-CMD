@@ -16,26 +16,30 @@ Button_Scratch = 0x1B;
 
 // ************************ Initialisation stuff. *****************************
 
-BehringerCMDPL1.FindChannel = function(group) {
+BehringerCMDPL1.FindChannel = function(group, base) {
     // Identify the channel
     switch(group) {
         case "[Channel1]":
-            Channel = 0x90 + BaseChannel + 0
+            Channel = base + BaseChannel + 0
             break;
 
         case "[Channel2]":
-            Channel = 0x90 + BaseChannel + 1
+            Channel = base + BaseChannel + 1
             break;
 
         case "[Channel3]":
-            Channel = 0x90 + BaseChannel + 2
+            Channel = base + BaseChannel + 2
             break;
 
         case "[Channel4]":
-            Channel = 0x90 + BaseChannel + 3
+            Channel = base + BaseChannel + 3
             break;
     }
     return Channel;
+}
+
+BehringerCMDPL1.Scale = function(value, baseMin, baseMax, limitMin, limitMax) {
+    return ((limitMax - limitMin) * (value - baseMin) / (baseMax - baseMin)) + limitMin;
 }
 
 BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status, group) {
@@ -54,9 +58,15 @@ BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status,
     }
 }
 
+BehringerCMDPL1.PitchIndicatorUpdate = function (value, group, control) {
+    Channel = BehringerCMDPL1.FindChannel(group, 0xB0);
+    CorrectedValue = BehringerCMDPL1.Scale(value, -1.83, 1.6, 1, 16 );
+    midi.sendShortMsg(Channel, 10, CorrectedValue); // Pitch
+}
+
 BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
     // Identify the button
-    Channel = BehringerCMDPL1.FindChannel(group);
+    Channel = BehringerCMDPL1.FindChannel(group, 0x90);
     switch(control) {
         case "cue_indicator":
             Button = 0x22;
@@ -124,6 +134,12 @@ BehringerCMDPL1.init = function () {
     engine.connectControl("[Channel2]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
     engine.connectControl("[Channel3]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
     engine.connectControl("[Channel4]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
+
+    engine.connectControl("[Channel1]", "pitch", "BehringerCMDPL1.PitchIndicatorUpdate");
+    engine.connectControl("[Channel2]", "pitch", "BehringerCMDPL1.PitchIndicatorUpdate");
+    engine.connectControl("[Channel3]", "pitch", "BehringerCMDPL1.PitchIndicatorUpdate");
+    engine.connectControl("[Channel4]", "pitch", "BehringerCMDPL1.PitchIndicatorUpdate");
+
 
 }
 
