@@ -18,7 +18,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>pfl</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x32</midino>
                 <options>
@@ -37,7 +36,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>pfl</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x33</midino>
                 <options>
@@ -47,7 +45,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>eject</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x17</midino>
                 <options>
@@ -84,7 +81,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>eject</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x1B</midino>
                 <options>
@@ -121,7 +117,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>pfl</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x31</midino>
                 <options>
@@ -131,7 +126,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>play</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x1C</midino>
                 <options>
@@ -150,7 +144,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>play</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x20</midino>
                 <options>
@@ -169,7 +162,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>pfl</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x32</midino>
                 <options>
@@ -206,7 +198,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>pfl</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x30</midino>
                 <options>
@@ -216,7 +207,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>eject</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x1B</midino>
                 <options>
@@ -226,7 +216,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>play</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x14</midino>
                 <options>
@@ -236,7 +225,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>eject</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x1F</midino>
                 <options>
@@ -246,7 +234,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>pfl</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x31</midino>
                 <options>
@@ -283,7 +270,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>play</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x20</midino>
                 <options>
@@ -320,7 +306,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>eject</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x13</midino>
                 <options>
@@ -330,7 +315,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>pfl</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x30</midino>
                 <options>
@@ -349,7 +333,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>play</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x14</midino>
                 <options>
@@ -368,7 +351,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>eject</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x1F</midino>
                 <options>
@@ -387,7 +369,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>play</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x18</midino>
                 <options>
@@ -413,6 +394,15 @@
                 </options>
             </control>
             <control>
+                <group>[PreviewDeck1]</group>
+                <key>play</key>
+                <status>0x84</status>
+                <midino>0x12</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[Master]</group>
                 <key>headMix</key>
                 <status>0xB4</status>
@@ -424,7 +414,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>eject</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x13</midino>
                 <options>
@@ -443,7 +432,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>pfl</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x33</midino>
                 <options>
@@ -453,7 +441,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>eject</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x17</midino>
                 <options>
@@ -481,7 +468,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>play</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x18</midino>
                 <options>
@@ -509,7 +495,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>play</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x1C</midino>
                 <options>
@@ -521,6 +506,15 @@
                 <key>headGain</key>
                 <status>0xB4</status>
                 <midino>0x04</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[PreviewDeck1]</group>
+                <key>play</key>
+                <status>0x94</status>
+                <midino>0x12</midino>
                 <options>
                     <normal/>
                 </options>
