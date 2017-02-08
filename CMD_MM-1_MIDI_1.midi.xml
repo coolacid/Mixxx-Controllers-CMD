@@ -70,15 +70,6 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>LoadSelectedTrack</key>
-                <status>0x84</status>
-                <midino>0x10</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
                 <group>[Channel2]</group>
                 <key>eject</key>
                 <status>0x84</status>
@@ -94,15 +85,6 @@
                 <midino>0x03</midino>
                 <options>
                     <spread64/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>LoadSelectedTrack</key>
-                <status>0x94</status>
-                <midino>0x11</midino>
-                <options>
-                    <normal/>
                 </options>
             </control>
             <control>
@@ -178,15 +160,6 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>LoadSelectedTrack</key>
-                <status>0x94</status>
-                <midino>0x10</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
                 <group>[EqualizerRack1_[Channel4]_Effect1]</group>
                 <key>parameter3</key>
                 <status>0xB4</status>
@@ -245,15 +218,6 @@
                 <key>super1</key>
                 <status>0xB4</status>
                 <midino>0x07</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Playlist]</group>
-                <key>LoadSelectedIntoFirstStopped</key>
-                <status>0x84</status>
-                <midino>0x03</midino>
                 <options>
                     <normal/>
                 </options>
@@ -353,15 +317,6 @@
                 <key>eject</key>
                 <status>0x94</status>
                 <midino>0x1F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Playlist]</group>
-                <key>LoadSelectedIntoFirstStopped</key>
-                <status>0x94</status>
-                <midino>0x03</midino>
                 <options>
                     <normal/>
                 </options>
@@ -479,15 +434,6 @@
                 <key>parameter1</key>
                 <status>0xB4</status>
                 <midino>0x15</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>LoadSelectedTrack</key>
-                <status>0x84</status>
-                <midino>0x11</midino>
                 <options>
                     <normal/>
                 </options>
