@@ -97,6 +97,8 @@ BehringerCMDPL1.initLEDs = function () {
     print("CMD PL-1: Setting LEDs");
     for (Channel=1; Channel <= 4; Channel++) {
         engine.trigger("[Channel" + (Channel) + "]", "play_indicator");
+        engine.trigger("[Channel" + (Channel) + "]", "cue_indicator");
+        engine.trigger("[Channel" + (Channel) + "]", "rate");
     }
 }
 BehringerCMDPL1.ResetLEDs = function () {
@@ -146,6 +148,7 @@ BehringerCMDPL1.ResetLEDs = function () {
 
 BehringerCMDPL1.init = function () {
 
+    BehringerCMDMM1.ResetLEDs();
     engine.connectControl("[Channel1]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
     engine.connectControl("[Channel2]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
     engine.connectControl("[Channel3]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
