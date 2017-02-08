@@ -6,37 +6,11 @@
             <file functionprefix="BehringerCMDPL1" filename="CMD_PL-1_MIDI_1.midi.js"/>
         </scriptfiles>
         <controls>
+            <!-- Disk 1 -->
             <control>
                 <group></group>
                 <key>BehringerCMDPL1.HandleScratchButton</key>
                 <status>0x90</status>
-                <midino>0x1B</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>BehringerCMDPL1.HandleScratchButton</key>
-                <status>0x91</status>
-                <midino>0x1B</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>BehringerCMDPL1.HandleScratchButton</key>
-                <status>0x92</status>
-                <midino>0x1B</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>BehringerCMDPL1.HandleScratchButton</key>
-                <status>0x93</status>
                 <midino>0x1B</midino>
                 <options>
                     <script-binding/>
@@ -52,6 +26,157 @@
             </control>
             <control>
                 <group></group>
+                <key>BehringerCMDPL1.HandleDisk</key>
+                <status>0xB0</status>
+                <midino>0x1F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>play</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x90</status>
+                <midino>0x23</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>cue_default</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x90</status>
+                <midino>0x22</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>sync_enabled</key>
+                <description>MIDI Learned from 16 messages.</description>
+                <status>0x90</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>fwd</key>
+                <description>MIDI Learned from 6 messages.</description>
+                <status>0x80</status>
+                <midino>0x25</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>LoadSelectedTrack</key>
+                <description>MIDI Learned from 14 messages.</description>
+                <status>0x80</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>back</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x80</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>play</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x80</status>
+                <midino>0x23</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>cue_default</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x80</status>
+                <midino>0x22</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>sync_enabled</key>
+                <description>MIDI Learned from 16 messages.</description>
+                <status>0x80</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>rate_set_default</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x90</status>
+                <midino>0x19</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>fwd</key>
+                <description>MIDI Learned from 6 messages.</description>
+                <status>0x90</status>
+                <midino>0x25</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>LoadSelectedTrack</key>
+                <description>MIDI Learned from 14 messages.</description>
+                <status>0x90</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>back</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x90</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+
+
+            <!-- Disk 2 -->
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleScratchButton</key>
+                <status>0x91</status>
+                <midino>0x1B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
                 <key>BehringerCMDPL1.HandleRateSlider</key>
                 <status>0xE1</status>
                 <options>
@@ -60,8 +185,308 @@
             </control>
             <control>
                 <group></group>
+                <key>BehringerCMDPL1.HandleDisk</key>
+                <status>0xB1</status>
+                <midino>0x1F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>play</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x91</status>
+                <midino>0x23</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>cue_default</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x91</status>
+                <midino>0x22</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>sync_enabled</key>
+                <description>MIDI Learned from 16 messages.</description>
+                <status>0x91</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>fwd</key>
+                <description>MIDI Learned from 6 messages.</description>
+                <status>0x81</status>
+                <midino>0x25</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>LoadSelectedTrack</key>
+                <description>MIDI Learned from 14 messages.</description>
+                <status>0x81</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>back</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x81</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>play</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x81</status>
+                <midino>0x23</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>cue_default</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x81</status>
+                <midino>0x22</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>sync_enabled</key>
+                <description>MIDI Learned from 16 messages.</description>
+                <status>0x81</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>rate_set_default</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x91</status>
+                <midino>0x19</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>fwd</key>
+                <description>MIDI Learned from 6 messages.</description>
+                <status>0x91</status>
+                <midino>0x25</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>LoadSelectedTrack</key>
+                <description>MIDI Learned from 14 messages.</description>
+                <status>0x91</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>back</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x91</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+
+            <!-- Disk 3 -->
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleScratchButton</key>
+                <status>0x92</status>
+                <midino>0x1B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
                 <key>BehringerCMDPL1.HandleRateSlider</key>
                 <status>0xE2</status>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleDisk</key>
+                <status>0xB2</status>
+                <midino>0x1F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>play</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x92</status>
+                <midino>0x23</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>cue_default</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x92</status>
+                <midino>0x22</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>sync_enabled</key>
+                <description>MIDI Learned from 16 messages.</description>
+                <status>0x92</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>fwd</key>
+                <description>MIDI Learned from 6 messages.</description>
+                <status>0x82</status>
+                <midino>0x25</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>LoadSelectedTrack</key>
+                <description>MIDI Learned from 14 messages.</description>
+                <status>0x82</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>back</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x82</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>play</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x82</status>
+                <midino>0x23</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>cue_default</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x82</status>
+                <midino>0x22</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>sync_enabled</key>
+                <description>MIDI Learned from 16 messages.</description>
+                <status>0x82</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>rate_set_default</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x92</status>
+                <midino>0x19</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>fwd</key>
+                <description>MIDI Learned from 6 messages.</description>
+                <status>0x92</status>
+                <midino>0x25</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>LoadSelectedTrack</key>
+                <description>MIDI Learned from 14 messages.</description>
+                <status>0x92</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>back</key>
+                <description>MIDI Learned from 8 messages.</description>
+                <status>0x92</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+
+            <!-- Disk 4 -->
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleScratchButton</key>
+                <status>0x93</status>
+                <midino>0x1B</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -77,435 +502,12 @@
             <control>
                 <group></group>
                 <key>BehringerCMDPL1.HandleDisk</key>
-                <status>0xB0</status>
-                <midino>0x1F</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>BehringerCMDPL1.HandleDisk</key>
-                <status>0xB1</status>
-                <midino>0x1F</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>BehringerCMDPL1.HandleDisk</key>
-                <status>0xB2</status>
-                <midino>0x1F</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>BehringerCMDPL1.HandleDisk</key>
                 <status>0xB3</status>
                 <midino>0x1F</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
-
-            <!-- Channel 1 -->
-            <control>
-                <group>[Channel1]</group>
-                <key>play</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0x90</status>
-                <midino>0x23</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>cue_default</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x90</status>
-                <midino>0x22</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>sync_enabled</key>
-                <description>MIDI Learned from 16 messages.</description>
-                <status>0x90</status>
-                <midino>0x20</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>fwd</key>
-                <description>MIDI Learned from 6 messages.</description>
-                <status>0x80</status>
-                <midino>0x25</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>LoadSelectedTrack</key>
-                <description>MIDI Learned from 14 messages.</description>
-                <status>0x80</status>
-                <midino>0x18</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>back</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x80</status>
-                <midino>0x24</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>play</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0x80</status>
-                <midino>0x23</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>cue_default</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x80</status>
-                <midino>0x22</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>sync_enabled</key>
-                <description>MIDI Learned from 16 messages.</description>
-                <status>0x80</status>
-                <midino>0x20</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>rate_set_default</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0x90</status>
-                <midino>0x19</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>fwd</key>
-                <description>MIDI Learned from 6 messages.</description>
-                <status>0x90</status>
-                <midino>0x25</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>LoadSelectedTrack</key>
-                <description>MIDI Learned from 14 messages.</description>
-                <status>0x90</status>
-                <midino>0x18</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>back</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x90</status>
-                <midino>0x24</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-
-
-            <control>
-                <group>[Channel2]</group>
-                <key>play</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0x91</status>
-                <midino>0x23</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>cue_default</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x91</status>
-                <midino>0x22</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>sync_enabled</key>
-                <description>MIDI Learned from 16 messages.</description>
-                <status>0x91</status>
-                <midino>0x20</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>fwd</key>
-                <description>MIDI Learned from 6 messages.</description>
-                <status>0x81</status>
-                <midino>0x25</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>LoadSelectedTrack</key>
-                <description>MIDI Learned from 14 messages.</description>
-                <status>0x81</status>
-                <midino>0x18</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>back</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x81</status>
-                <midino>0x24</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>play</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0x81</status>
-                <midino>0x23</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>cue_default</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x81</status>
-                <midino>0x22</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>sync_enabled</key>
-                <description>MIDI Learned from 16 messages.</description>
-                <status>0x81</status>
-                <midino>0x20</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>rate_set_default</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0x91</status>
-                <midino>0x19</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>fwd</key>
-                <description>MIDI Learned from 6 messages.</description>
-                <status>0x91</status>
-                <midino>0x25</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>LoadSelectedTrack</key>
-                <description>MIDI Learned from 14 messages.</description>
-                <status>0x91</status>
-                <midino>0x18</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>back</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x91</status>
-                <midino>0x24</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-
-            <control>
-                <group>[Channel3]</group>
-                <key>play</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0x92</status>
-                <midino>0x23</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>cue_default</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x92</status>
-                <midino>0x22</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>sync_enabled</key>
-                <description>MIDI Learned from 16 messages.</description>
-                <status>0x92</status>
-                <midino>0x20</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>fwd</key>
-                <description>MIDI Learned from 6 messages.</description>
-                <status>0x82</status>
-                <midino>0x25</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>LoadSelectedTrack</key>
-                <description>MIDI Learned from 14 messages.</description>
-                <status>0x82</status>
-                <midino>0x18</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>back</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x82</status>
-                <midino>0x24</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>play</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0x82</status>
-                <midino>0x23</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>cue_default</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x82</status>
-                <midino>0x22</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>sync_enabled</key>
-                <description>MIDI Learned from 16 messages.</description>
-                <status>0x82</status>
-                <midino>0x20</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>rate_set_default</key>
-                <description>MIDI Learned from 2 messages.</description>
-                <status>0x92</status>
-                <midino>0x19</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>fwd</key>
-                <description>MIDI Learned from 6 messages.</description>
-                <status>0x92</status>
-                <midino>0x25</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>LoadSelectedTrack</key>
-                <description>MIDI Learned from 14 messages.</description>
-                <status>0x92</status>
-                <midino>0x18</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>back</key>
-                <description>MIDI Learned from 8 messages.</description>
-                <status>0x92</status>
-                <midino>0x24</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-
             <control>
                 <group>[Channel4]</group>
                 <key>play</key>
