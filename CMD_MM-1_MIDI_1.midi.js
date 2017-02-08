@@ -31,27 +31,6 @@ BehringerCMDMM1.PFLUpdate = function (value, group, control) {
     print(value + " | " + group + " | " + control);
     switch(group) {
         case "[Channel1]":
-            midi.sendShortMsg(0x94, 0x17, value); // Channel 1, 1
-            break;
-
-        case "[Channel2]":
-            midi.sendShortMsg(0x94, 0x1B, value); // Channel 2, 1
-            break;
-
-        case "[Channel3]":
-            midi.sendShortMsg(0x94, 0x13, value); // Channel 3, 1
-            break;
-
-        case "[Channel4]":
-            midi.sendShortMsg(0x94, 0x1F, value); // Channel 4, 1
-            break;
-    }
-}
-
-
-BehringerCMDMM1.CueIndicatorUpdate = function (value, group, control) {
-    switch(group) {
-        case "[Channel1]":
             midi.sendShortMsg(0x94, 0x31, value); // Channel 1, Cue
             break;
 
@@ -65,6 +44,26 @@ BehringerCMDMM1.CueIndicatorUpdate = function (value, group, control) {
 
         case "[Channel4]":
             midi.sendShortMsg(0x94, 0x33, value); // Channel 4, Cue
+            break;
+    }
+}
+
+BehringerCMDMM1.PlayIndicatorUpdate = function (value, group, control) {
+    switch(group) {
+        case "[Channel1]":
+            midi.sendShortMsg(0x94, 0x14, value); // Channel 1, 2
+            break;
+
+        case "[Channel2]":
+            midi.sendShortMsg(0x94, 0x18, value); // Channel 2, 2
+            break;
+
+        case "[Channel3]":
+            midi.sendShortMsg(0x94, 0x1C, value); // Channel 3, 2
+            break;
+
+        case "[Channel4]":
+            midi.sendShortMsg(0x94, 0x1F, value); // Channel 4, 2
             break;
     }
 }
@@ -112,10 +111,10 @@ BehringerCMDMM1.init = function () {
     engine.connectControl("[Channel4]", "pfl", "BehringerCMDMM1.PFLUpdate");
 
     // Connect the Cue Indicator to the Cue button on each channel
-    engine.connectControl("[Channel1]", "cue_indicator", "BehringerCMDMM1.CueIndicatorUpdate");
-    engine.connectControl("[Channel2]", "cue_indicator", "BehringerCMDMM1.CueIndicatorUpdate");
-    engine.connectControl("[Channel3]", "cue_indicator", "BehringerCMDMM1.CueIndicatorUpdate");
-    engine.connectControl("[Channel4]", "cue_indicator", "BehringerCMDMM1.CueIndicatorUpdate");
+    engine.connectControl("[Channel1]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
+    engine.connectControl("[Channel2]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
+    engine.connectControl("[Channel3]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
+    engine.connectControl("[Channel4]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
 }
 
 BehringerCMDMM1.shutdown = function () {

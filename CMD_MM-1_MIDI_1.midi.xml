@@ -9,7 +9,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel1]_Effect1]</group>
                 <key>parameter2</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x0F</midino>
                 <options>
@@ -17,9 +16,18 @@
                 </options>
             </control>
             <control>
+                <group>[Channel2]</group>
+                <key>pfl</key>
+                <description></description>
+                <status>0x84</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[QuickEffectRack1_[Channel4]]</group>
                 <key>super1</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x09</midino>
                 <options>
@@ -28,17 +36,17 @@
             </control>
             <control>
                 <group>[Channel4]</group>
-                <key>cue_default</key>
+                <key>pfl</key>
                 <description></description>
                 <status>0x94</status>
                 <midino>0x33</midino>
                 <options>
-                    <switch/>
+                    <normal/>
                 </options>
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>pfl</key>
+                <key>eject</key>
                 <description></description>
                 <status>0x94</status>
                 <midino>0x17</midino>
@@ -49,7 +57,6 @@
             <control>
                 <group>[Channel3]</group>
                 <key>volume</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x30</midino>
                 <options>
@@ -59,7 +66,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel2]_Effect1]</group>
                 <key>parameter1</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x14</midino>
                 <options>
@@ -69,7 +75,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>LoadSelectedTrack</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x10</midino>
                 <options>
@@ -78,7 +83,7 @@
             </control>
             <control>
                 <group>[Channel2]</group>
-                <key>pfl</key>
+                <key>eject</key>
                 <description></description>
                 <status>0x84</status>
                 <midino>0x1B</midino>
@@ -89,7 +94,6 @@
             <control>
                 <group>[Playlist]</group>
                 <key>SelectTrackKnob</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x03</midino>
                 <options>
@@ -99,7 +103,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>LoadSelectedTrack</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x11</midino>
                 <options>
@@ -109,7 +112,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel3]_Effect1]</group>
                 <key>parameter2</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x0E</midino>
                 <options>
@@ -117,9 +119,18 @@
                 </options>
             </control>
             <control>
+                <group>[Channel1]</group>
+                <key>pfl</key>
+                <description></description>
+                <status>0x84</status>
+                <midino>0x31</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[Master]</group>
                 <key>crossfader</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x40</midino>
                 <options>
@@ -127,9 +138,18 @@
                 </options>
             </control>
             <control>
+                <group>[Channel4]</group>
+                <key>eject</key>
+                <description></description>
+                <status>0x84</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[QuickEffectRack1_[Channel2]]</group>
                 <key>super1</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x08</midino>
                 <options>
@@ -138,18 +158,17 @@
             </control>
             <control>
                 <group>[Channel2]</group>
-                <key>cue_default</key>
+                <key>pfl</key>
                 <description></description>
                 <status>0x94</status>
                 <midino>0x32</midino>
                 <options>
-                    <switch/>
+                    <normal/>
                 </options>
             </control>
             <control>
                 <group>[EqualizerRack1_[Channel1]_Effect1]</group>
                 <key>parameter1</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x13</midino>
                 <options>
@@ -159,7 +178,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>LoadSelectedTrack</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x10</midino>
                 <options>
@@ -169,7 +187,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel4]_Effect1]</group>
                 <key>parameter3</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x0D</midino>
                 <options>
@@ -178,7 +195,7 @@
             </control>
             <control>
                 <group>[Channel2]</group>
-                <key>pfl</key>
+                <key>eject</key>
                 <description></description>
                 <status>0x94</status>
                 <midino>0x1B</midino>
@@ -187,29 +204,18 @@
                 </options>
             </control>
             <control>
-                <group>[Channel4]</group>
+                <group>[Channel3]</group>
                 <key>pfl</key>
                 <description></description>
                 <status>0x84</status>
-                <midino>0x1F</midino>
+                <midino>0x30</midino>
                 <options>
                     <normal/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>cue_default</key>
-                <description></description>
-                <status>0x94</status>
-                <midino>0x31</midino>
-                <options>
-                    <switch/>
-                </options>
-            </control>
-            <control>
                 <group>[QuickEffectRack1_[Channel1]]</group>
                 <key>super1</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x07</midino>
                 <options>
@@ -219,7 +225,6 @@
             <control>
                 <group>[Playlist]</group>
                 <key>LoadSelectedIntoFirstStopped</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x03</midino>
                 <options>
@@ -227,9 +232,18 @@
                 </options>
             </control>
             <control>
+                <group>[Channel1]</group>
+                <key>pfl</key>
+                <description></description>
+                <status>0x94</status>
+                <midino>0x31</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[EqualizerRack1_[Channel3]_Effect1]</group>
                 <key>parameter1</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x12</midino>
                 <options>
@@ -237,9 +251,18 @@
                 </options>
             </control>
             <control>
+                <group>[Channel4]</group>
+                <key>eject</key>
+                <description></description>
+                <status>0x94</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[Master]</group>
                 <key>gain</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x01</midino>
                 <options>
@@ -249,7 +272,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel2]_Effect1]</group>
                 <key>parameter3</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x0C</midino>
                 <options>
@@ -259,7 +281,6 @@
             <control>
                 <group>[Channel4]</group>
                 <key>volume</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x33</midino>
                 <options>
@@ -268,7 +289,7 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>pfl</key>
+                <key>eject</key>
                 <description></description>
                 <status>0x84</status>
                 <midino>0x13</midino>
@@ -277,19 +298,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel3]</group>
-                <key>cue_default</key>
-                <description></description>
-                <status>0x94</status>
-                <midino>0x30</midino>
-                <options>
-                    <switch/>
-                </options>
-            </control>
-            <control>
                 <group>[QuickEffectRack1_[Channel3]]</group>
                 <key>super1</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x06</midino>
                 <options>
@@ -297,9 +307,18 @@
                 </options>
             </control>
             <control>
+                <group>[Channel3]</group>
+                <key>pfl</key>
+                <description></description>
+                <status>0x94</status>
+                <midino>0x30</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[EqualizerRack1_[Channel4]_Effect1]</group>
                 <key>parameter2</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x11</midino>
                 <options>
@@ -307,19 +326,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel4]</group>
-                <key>pfl</key>
-                <description></description>
-                <status>0x94</status>
-                <midino>0x1F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
                 <group>[Playlist]</group>
                 <key>LoadSelectedIntoFirstStopped</key>
-                <description></description>
                 <status>0x94</status>
                 <midino>0x03</midino>
                 <options>
@@ -329,7 +337,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel1]_Effect1]</group>
                 <key>parameter3</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x0B</midino>
                 <options>
@@ -339,7 +346,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>volume</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x32</midino>
                 <options>
@@ -349,7 +355,6 @@
             <control>
                 <group>[Master]</group>
                 <key>headMix</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x05</midino>
                 <options>
@@ -358,7 +363,7 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>pfl</key>
+                <key>eject</key>
                 <description></description>
                 <status>0x94</status>
                 <midino>0x13</midino>
@@ -369,7 +374,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel2]_Effect1]</group>
                 <key>parameter2</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x10</midino>
                 <options>
@@ -377,8 +381,18 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
+                <group>[Channel4]</group>
                 <key>pfl</key>
+                <description></description>
+                <status>0x84</status>
+                <midino>0x33</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>eject</key>
                 <description></description>
                 <status>0x84</status>
                 <midino>0x17</midino>
@@ -389,7 +403,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel3]_Effect1]</group>
                 <key>parameter3</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x0A</midino>
                 <options>
@@ -399,7 +412,6 @@
             <control>
                 <group>[Channel1]</group>
                 <key>volume</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x31</midino>
                 <options>
@@ -409,7 +421,6 @@
             <control>
                 <group>[EqualizerRack1_[Channel4]_Effect1]</group>
                 <key>parameter1</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x15</midino>
                 <options>
@@ -419,7 +430,6 @@
             <control>
                 <group>[Channel2]</group>
                 <key>LoadSelectedTrack</key>
-                <description></description>
                 <status>0x84</status>
                 <midino>0x11</midino>
                 <options>
@@ -429,7 +439,6 @@
             <control>
                 <group>[Master]</group>
                 <key>headGain</key>
-                <description></description>
                 <status>0xB4</status>
                 <midino>0x04</midino>
                 <options>
