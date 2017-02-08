@@ -94,6 +94,12 @@ BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
 }
 
 BehringerCMDPL1.initLEDs = function () {
+    print("CMD PL-1: Setting LEDs");
+    for (Channel=1; Channel <= 4; Channel++) {
+        engine.trigger("[Channel" + (Channel) + "]", "play_indicator");
+    }
+}
+BehringerCMDPL1.ResetLEDs = function () {
     // (re)Initialise any LEDs that are direcctly controlled by this script.
     print("CMD PL-1: Setting LEDs");
 
@@ -139,8 +145,6 @@ BehringerCMDPL1.initLEDs = function () {
 
 
 BehringerCMDPL1.init = function () {
-    // Initialise anything that might not be in the correct state.
-    BehringerCMDPL1.initLEDs();
 
     engine.connectControl("[Channel1]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
     engine.connectControl("[Channel2]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
@@ -157,10 +161,12 @@ BehringerCMDPL1.init = function () {
     engine.connectControl("[Channel3]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
     engine.connectControl("[Channel4]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
 
+    // Initialise anything that might not be in the correct state.
+    BehringerCMDPL1.initLEDs();
 
 }
 
 BehringerCMDPL1.shutdown = function () {
     // Reset the Lights to off
-    BehringerCMDMM1.initLEDs();
+    BehringerCMDMM1.ResetLEDs();
 };
