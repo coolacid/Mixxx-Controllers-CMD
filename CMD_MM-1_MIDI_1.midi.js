@@ -71,7 +71,7 @@ BehringerCMDMM1.CueIndicatorUpdate = function (value, group, control) {
 
 BehringerCMDMM1.initLEDs = function () {
     // (re)Initialise any LEDs that are direcctly controlled by this script.
-    print("Setting LEDs");
+    print("CMD MM-1: Setting LEDs");
     midi.sendShortMsg(0xB4, 80, 48); // VuMeterL
     midi.sendShortMsg(0xB4, 81, 48); // VuMeterR
 
