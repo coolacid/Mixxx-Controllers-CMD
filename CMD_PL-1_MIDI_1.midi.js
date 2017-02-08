@@ -58,6 +58,11 @@ BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status,
     }
 }
 
+BehringerCMDPL1.HandleRateSlider = function (channel, control, value, status, group) {
+    CorrectedValue = BehringerCMDPL1.Scale(value, 0x000, 127, -1, 1);
+    engine.setValue("[Channel"+(channel+1)+"]", "rate", CorrectedValue);
+}
+
 BehringerCMDPL1.RateIndicatorUpdate = function (value, group, control) {
     Channel = BehringerCMDPL1.FindChannel(group, 0xB0);
     CorrectedValue = BehringerCMDPL1.Scale(value, -1, 1, 1, 16 );

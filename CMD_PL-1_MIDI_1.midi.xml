@@ -106,6 +106,15 @@
                 </options>
             </control>
             <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleRateSlider</key>
+                <status>0xE0</status>
+                <midino>0x7F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
                 <group>[Channel1]</group>
                 <key>fwd</key>
                 <description>MIDI Learned from 6 messages.</description>
