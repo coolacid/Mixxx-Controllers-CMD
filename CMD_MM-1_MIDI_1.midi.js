@@ -65,6 +65,10 @@ BehringerCMDMM1.PlayIndicatorUpdate = function (value, group, control) {
         case "[Channel4]":
             midi.sendShortMsg(0x94, 0x20, value); // Channel 4, 2
             break;
+
+        case "[PreviewDeck1]":
+            midi.sendShortMsg(0x94, 0x12, value); // Channel 4, 2
+            break;
     }
 }
 
@@ -140,6 +144,7 @@ BehringerCMDMM1.init = function () {
     engine.connectControl("[Channel2]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
     engine.connectControl("[Channel3]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
     engine.connectControl("[Channel4]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
+    engine.connectControl("[PreviewDeck1]", "play_indicator", "BehringerCMDMM1.PlayIndicatorUpdate");
 
     // Indicate when there is a loaded track
     // Added 2.1.0 - Currently have 2.0.0 :(
