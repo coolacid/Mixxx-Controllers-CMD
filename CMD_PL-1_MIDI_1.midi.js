@@ -58,10 +58,10 @@ BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status,
     }
 }
 
-BehringerCMDPL1.PitchIndicatorUpdate = function (value, group, control) {
+BehringerCMDPL1.RateIndicatorUpdate = function (value, group, control) {
     Channel = BehringerCMDPL1.FindChannel(group, 0xB0);
-    CorrectedValue = BehringerCMDPL1.Scale(value, -1.83, 1.6, 1, 16 );
-    midi.sendShortMsg(Channel, 10, CorrectedValue); // Pitch
+    CorrectedValue = BehringerCMDPL1.Scale(value, -1, 1, 1, 16 );
+    midi.sendShortMsg(Channel, 10, CorrectedValue); // Rate
 }
 
 BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
@@ -92,7 +92,7 @@ BehringerCMDPL1.initLEDs = function () {
         }
 
         // Set the rest of the LEDs
-        midi.sendShortMsg(0xB0 + Channel, 10, 8); // Pitch
+        midi.sendShortMsg(0xB0 + Channel, 10, 8); // Rate
 
         midi.sendShortMsg(0x90 + Channel, 0x10, 0x00); // Button: 1
         midi.sendShortMsg(0x90 + Channel, 0x11, 0x00); // Button: 2
@@ -135,10 +135,10 @@ BehringerCMDPL1.init = function () {
     engine.connectControl("[Channel3]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
     engine.connectControl("[Channel4]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
 
-    engine.connectControl("[Channel1]", "pitch", "BehringerCMDPL1.PitchIndicatorUpdate");
-    engine.connectControl("[Channel2]", "pitch", "BehringerCMDPL1.PitchIndicatorUpdate");
-    engine.connectControl("[Channel3]", "pitch", "BehringerCMDPL1.PitchIndicatorUpdate");
-    engine.connectControl("[Channel4]", "pitch", "BehringerCMDPL1.PitchIndicatorUpdate");
+    engine.connectControl("[Channel1]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
+    engine.connectControl("[Channel2]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
+    engine.connectControl("[Channel3]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
+    engine.connectControl("[Channel4]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
 
 
 }
