@@ -121,6 +121,9 @@ BehringerCMDPL1.initLEDs = function () {
         midi.sendShortMsg(0x90 + Channel, 0x25, 0x00); // Button: >>
         midi.sendShortMsg(0x90 + Channel, 0x26, 0x00); // Button: -
         midi.sendShortMsg(0x90 + Channel, 0x27, 0x00); // Button: +
+
+        // Set SoftTakeOver on Rate
+        engine.softTakeover("[Channel" + (Channel + 1) +"]", "rate", true);
     }
 }
 
