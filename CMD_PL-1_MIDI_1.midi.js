@@ -44,7 +44,7 @@ BehringerCMDPL1.Scale = function(value, baseMin, baseMax, limitMin, limitMax) {
 
 BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status, group) {
     Channel = 0x90 + BaseChannel + channel;
-    if (status === 0x90) {
+    if (status && 0x90) {
         if (engine.isScratching(channel+1)) {
             engine.scratchDisable(channel+1);
             value = 0x00;
@@ -147,8 +147,7 @@ BehringerCMDPL1.ResetLEDs = function () {
 
 
 BehringerCMDPL1.init = function () {
-
-    BehringerCMDMM1.ResetLEDs();
+//    BehringerCMDMM1.ResetLEDs();
     engine.connectControl("[Channel1]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
     engine.connectControl("[Channel2]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
     engine.connectControl("[Channel3]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
