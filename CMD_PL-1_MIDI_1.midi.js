@@ -12,6 +12,12 @@ function BehringerCMDPL1() {};
 
 BaseChannel = 0;
 
+// Options
+
+TouchSensitivePlatter = true // Touching top of platter will put in scratch mode
+
+// Buttons
+
 Button_Scratch = 0x1B;
 
 // ************************ Initialisation stuff. *****************************
@@ -44,17 +50,28 @@ BehringerCMDPL1.Scale = function(value, baseMin, baseMax, limitMin, limitMax) {
 
 BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status, group) {
     Channel = 0x90 + BaseChannel + channel;
-    if (status && 0x90) {
-        if (engine.isScratching(channel+1)) {
-            engine.scratchDisable(channel+1);
-            value = 0x00;
-        } else {
-            var alpha = 1.0/8;
-            var beta = alpha/32;
-            engine.scratchEnable(channel+1, 128, 33+1/3, alpha, beta);
-            value = 0x01;
+    var alpha = 1.0/8;
+    var beta = alpha/32;
+    if (control == 0x1B) {
+        // Handle the Scratch Button
+        if (status & 0x90) {
+            if (engine.isScratching(channel+1)) {
+                engine.scratchDisable(channel+1);
+                midi.sendShortMsg(Channel, Button_Scratch, 0x00);
+            } else {
+                engine.scratchEnable(channel+1, 128, 33+1/3, alpha, beta);
+                midi.sendShortMsg(Channel, Button_Scratch, 0x02);
+            }
         }
-        midi.sendShortMsg(Channel, Button_Scratch, value);
+    } else if (TouchSensitivePlatter && control == 0x1F) {
+        // Handle the scratch pad
+        if ((status & 0x90) == 0x90) {
+            engine.scratchEnable(channel+1, 128, 33+1/3, alpha, beta);
+            midi.sendShortMsg(Channel, Button_Scratch, 0x01);
+        } else if (status & 0x80) {
+            engine.scratchDisable(channel+1);
+            midi.sendShortMsg(Channel, Button_Scratch, 0x00);
+        }
     }
 }
 
@@ -96,13 +113,14 @@ BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
 BehringerCMDPL1.initLEDs = function () {
     print("CMD PL-1: Setting LEDs and settings");
     for (Channel=1; Channel <= 4; Channel++) {
-        engine.trigger("[Channel" + (Channel) + "]", "play_indicator");
-        engine.trigger("[Channel" + (Channel) + "]", "cue_indicator");
-        engine.trigger("[Channel" + (Channel) + "]", "rate");
+        engine.trigger("[Channel" + Channel + "]", "play_indicator");
+        engine.trigger("[Channel" + Channel + "]", "cue_indicator");
+        engine.trigger("[Channel" + Channel + "]", "rate");
         // Set SoftTakeOver on Rate
-        engine.softTakeover("[Channel" + (Channel + 1) +"]", "rate", true);
+        engine.softTakeover("[Channel" + Channel +"]", "rate", true);
     }
 }
+
 BehringerCMDPL1.ResetLEDs = function () {
     // (re)Initialise any LEDs that are direcctly controlled by this script.
     print("CMD PL-1: Resetting LEDs");
