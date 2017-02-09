@@ -66,7 +66,7 @@ BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status,
     } else if (TouchSensitivePlatter && control == 0x1F) {
         // Handle the scratch pad
         if ((status & 0x90) == 0x90) {
-            engine.scratchEnable(channel+1, 128, 33+1/3, alpha, beta);
+            engine.scratchEnable(channel+1, 128, 33+1/3, alpha, beta, false);
             midi.sendShortMsg(Channel, Button_Scratch, 0x01);
         } else if (status & 0x80) {
             engine.scratchDisable(channel+1);
