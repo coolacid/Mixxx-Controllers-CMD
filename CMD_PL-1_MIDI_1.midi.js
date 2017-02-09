@@ -52,6 +52,29 @@ BehringerCMDPL1.Scale = function(value, baseMin, baseMax, limitMin, limitMax) {
     return ((limitMax - limitMin) * (value - baseMin) / (baseMax - baseMin)) + limitMin;
 }
 
+BehringerCMDPL1.HandleHotcue = function (channel, control, value, status, group) {
+    switch (control) {
+        case 0x10:
+            hotcue = "hotcue_1";
+            break;
+        case 0x11:
+            hotcue = "hotcue_2";
+            break;
+        case 0x12:
+            hotcue = "hotcue_3";
+            break;
+        case 0x13:
+            hotcue = "hotcue_4";
+            break;
+    }
+    // If hotcue enabled, goto, else set?
+    if (engine.getParameter("[Channel" + (channel+1) + "]", hotcue + "_enabled")) {
+        engine.setParameter("[Channel" + (channel+1) + "]", hotcue + "_goto", 1);
+    } else {
+        engine.setParameter("[Channel" + (channel+1) + "]", hotcue + "_set", 1);
+    }
+}
+
 BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status, group) {
     Channel = 0x90 + BaseChannel + channel;
     var alpha = 1.0/8;
