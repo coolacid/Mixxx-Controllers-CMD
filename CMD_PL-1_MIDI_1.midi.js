@@ -226,3 +226,82 @@ BehringerCMDPL1.shutdown = function () {
     // Reset the Lights to off
     BehringerCMDPL1.ResetLEDs();
 };
+
+
+// Monitor for Short / Long Presses
+// From: https://www.mixxx.org/forums/viewtopic.php?f=7&t=7681
+
+var QUICK_PRESS = 1;
+var DOUBLE_PRESS = 2;
+var LONG_PRESS = 3;
+
+// =======================  LongShortBtn   
+//Callback           : Callback function you have to provide (see end of the code), that will return
+//                     the original event parameters (channel, control, value, status, group)
+//                     and the kind of press event affecting your button (eventkind)
+//                     This callback will be called once you release the button
+//                     (Value will be equal to UP). You must provide this parameter.
+//LongPressThreshold : delay in ms above which a firts press on the
+//                     button will be considered as a Long press (default = 500ms).
+//                     This parameter is optional.
+//CallBackOKLongPress : This callback will give you the same values than the first one
+//                     but it will be triggered as soon as the Long press is taken
+//                     into account ( at this moment, value = DOWN because you are still
+//                     holding down the button). This permits for instance to lit up a light indicating
+//                     the user that he/she can release the button. This callback occurs before the first one.
+//                     This parameter is optional.
+//Like that, you can decide to put the code for the long press in either callback function
+BehringerCMDPL1.LongShortBtn = function(Callback, LongPressThreshold, CallBackOKLongPress) {
+    var myself = this;
+    this.Callback = Callback;
+    this.channel = 0;
+    this.control = 0; 
+    this.value = 0;
+    this.status = 0;
+    this.group = "";
+    this.CallBackOKLongPress = CallBackOKLongPress;
+    if (LongPressThreshold) {
+        this.LongPressThreshold = LongPressThreshold;
+    } else {
+        //Sets a default value of 500 ms
+        this.LongPressThreshold = 500;
+    }
+
+    this.ButtonLongPress = false;
+    this.ButtonLongPressTimer = 0;
+
+    // Timer's call back for long press
+    this.ButtonAssertLongPress = function() {
+        this.ButtonLongPress = true;
+        //the timer was stopped, we set it to zero
+        this.ButtonLongPressTimer = 0;
+        // let's take action of the long press
+        // Make sure the callback is a functionâ€ and exist
+        if (typeof callback === "function") {
+            // Call it, since we have confirmed it is callableâ€
+            this.CallBackOKLongPress(this.channel, this.control, this.value, this.status, this.group, LONG_PRESS);
+        }
+    };
+
+    this.ButtonDown = function(channel, control, value, status, group) {
+        this.channel = channel;
+        this.control = control; 
+        this.value = value;
+        this.status = status;
+        this.group = group;
+      this.ButtonLongPress = false;
+        this.ButtonLongPressTimer = engine.beginTimer(this.LongPressThreshold, function(){ myself.ButtonAssertLongPress(); }, true);
+    };
+
+    this.ButtonUp = function() {
+        if (this.ButtonLongPressTimer !== 0) {
+            engine.stopTimer(this.ButtonLongPressTimer);
+            this.ButtonLongPressTimer = 0;
+        }
+      if (this.ButtonLongPress) {
+            this.Callback(this.channel, this.control, this.value, this.status, this.group, LONG_PRESS);
+        } else {
+            this.Callback(this.channel, this.control, this.value, this.status, this.group, QUICK_PRESS);
+        }
+    };
+};
