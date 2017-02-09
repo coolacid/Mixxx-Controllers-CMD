@@ -292,6 +292,42 @@
             </control>
             <control>
                 <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x81</status>
+                <midino>0x10</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x81</status>
+                <midino>0x11</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x81</status>
+                <midino>0x12</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x81</status>
+                <midino>0x13</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
                 <key>BehringerCMDPL1.HandleScratchButton</key>
                 <status>0x91</status>
                 <midino>0x1F</midino>
@@ -491,6 +527,42 @@
             </control>
             <control>
                 <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x82</status>
+                <midino>0x10</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x82</status>
+                <midino>0x11</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x82</status>
+                <midino>0x12</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x82</status>
+                <midino>0x13</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
                 <key>BehringerCMDPL1.HandleScratchButton</key>
                 <status>0x92</status>
                 <midino>0x1F</midino>
@@ -683,6 +755,42 @@
                 <group></group>
                 <key>BehringerCMDPL1.HandleHotcue</key>
                 <status>0x93</status>
+                <midino>0x13</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x83</status>
+                <midino>0x10</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x83</status>
+                <midino>0x11</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x83</status>
+                <midino>0x12</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>BehringerCMDPL1.HandleHotcue</key>
+                <status>0x83</status>
                 <midino>0x13</midino>
                 <options>
                     <script-binding/>
