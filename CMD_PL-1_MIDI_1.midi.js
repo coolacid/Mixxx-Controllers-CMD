@@ -69,7 +69,7 @@ BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status,
             engine.scratchEnable(channel+1, 128, 33+1/3, alpha, beta, false);
             midi.sendShortMsg(Channel, Button_Scratch, 0x01);
         } else if (status & 0x80) {
-            engine.scratchDisable(channel+1);
+            engine.scratchDisable(channel+1, false);
             midi.sendShortMsg(Channel, Button_Scratch, 0x00);
         }
     }
