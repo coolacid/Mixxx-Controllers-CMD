@@ -92,8 +92,18 @@ BehringerCMDMM1.LoadIndicatorUpdate = function (value, group, control) {
     }
 }
 
-
 BehringerCMDMM1.initLEDs = function () {
+    print("CMD MM-1: Setting LEDs and settings");
+    for (Channel=1; Channel <= 4; Channel++) {
+        engine.trigger("[Channel" + (Channel) + "]", "pfl");
+        engine.trigger("[Channel" + (Channel) + "]", "play_indicator");
+    }
+    engine.trigger("[PreviewDeck1]", "play_indicator");
+    engine.trigger("[Master]", "VuMeterL");
+    engine.trigger("[Master]", "VuMeterR");
+}
+
+BehringerCMDMM1.ResetLEDs = function () {
     // (re)Initialise any LEDs that are direcctly controlled by this script.
     print("CMD MM-1: Setting LEDs");
     midi.sendShortMsg(0xB4, 80, 48); // VuMeterL
@@ -127,7 +137,6 @@ BehringerCMDMM1.initLEDs = function () {
 
 BehringerCMDMM1.init = function () {
     // Initialise anything that might not be in the correct state.
-    BehringerCMDMM1.initLEDs();
 
     // Connect the VUMeters
     engine.connectControl("[Master]", "VuMeterL", "BehringerCMDMM1.VuMeterUpdate");
@@ -153,9 +162,12 @@ BehringerCMDMM1.init = function () {
 //    engine.connectControl("[Channel3]", "track_loaded", "BehringerCMDMM1.LoadIndicatorUpdate");
 //    engine.connectControl("[Channel4]", "track_loaded", "BehringerCMDMM1.LoadIndicatorUpdate");
 
+    BehringerCMDMM1.initLEDs();
+
+
 }
 
 BehringerCMDMM1.shutdown = function () {
     // Reset the Lights to off
-    BehringerCMDMM1.initLEDs();
+    BehringerCMDMM1.ResetLEDs();
 };
