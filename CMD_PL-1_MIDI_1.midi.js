@@ -20,6 +20,9 @@ TouchSensitivePlatter = true // Touching top of platter will put in scratch mode
 
 Button_Scratch = 0x1B;
 
+// Internal Verables
+Button_Scratching = false
+
 // ************************ Initialisation stuff. *****************************
 
 BehringerCMDPL1.FindChannel = function(group, base) {
@@ -58,12 +61,14 @@ BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status,
             if (engine.isScratching(channel+1)) {
                 engine.scratchDisable(channel+1);
                 midi.sendShortMsg(Channel, Button_Scratch, 0x00);
+                Button_Scratching = false
             } else {
                 engine.scratchEnable(channel+1, 128, 33+1/3, alpha, beta);
                 midi.sendShortMsg(Channel, Button_Scratch, 0x02);
+                Button_Scratching = true
             }
         }
-    } else if (TouchSensitivePlatter && control == 0x1F) {
+    } else if (TouchSensitivePlatter && control == 0x1F && !Button_Scratching) {
         // Handle the scratch pad
         if ((status & 0x90) == 0x90) {
             engine.scratchEnable(channel+1, 128, 33+1/3, alpha, beta, false);
