@@ -128,6 +128,7 @@ BehringerCMDPL1.RateIndicatorUpdate = function (value, group, control) {
     midi.sendShortMsg(Channel, 10, CorrectedValue); // Rate
 }
 
+
 BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
     // Identify the button
     Channel = BehringerCMDPL1.FindChannel(group, 0x90);
@@ -137,6 +138,9 @@ BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
             break;
         case "play_indicator":
             Button = 0x23;
+            break;
+        case "hotcue_1_enabled":
+            Button = 0x10;
             break;
     }
     // Send the message
@@ -208,6 +212,9 @@ BehringerCMDPL1.init = function () {
     engine.connectControl("[Channel2]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
     engine.connectControl("[Channel3]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
     engine.connectControl("[Channel4]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
+
+    engine.connectControl("[Channel1]", "hotcue_1_enabled", "BehringerCMDPL1.IndicatorUpdate");
+
 
     // Initialise anything that might not be in the correct state.
     BehringerCMDPL1.initLEDs();
