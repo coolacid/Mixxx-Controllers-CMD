@@ -18,11 +18,94 @@ TouchSensitivePlatter = true // Touching top of platter will put in scratch mode
 
 // Buttons
 
+ON = 0x7F, OFF = 0x00, DOWN = 0x7F, UP = 0x00;
+
 Button_Scratch = 0x1B;
 
 // Internal Verables
 Button_Scratching = false
 DelayScratch = false
+
+// ***************************** Global Constructors  **********************************
+
+// Monitor for Short / Long Presses
+// From: https://www.mixxx.org/forums/viewtopic.php?f=7&t=7681
+
+var QUICK_PRESS = 1;
+var DOUBLE_PRESS = 2;
+var LONG_PRESS = 3;
+
+// =======================  LongShortBtn   
+//Callback           : Callback function you have to provide (see end of the code), that will return
+//                     the original event parameters (channel, control, value, status, group)
+//                     and the kind of press event affecting your button (eventkind)
+//                     This callback will be called once you release the button
+//                     (Value will be equal to UP). You must provide this parameter.
+//LongPressThreshold : delay in ms above which a firts press on the
+//                     button will be considered as a Long press (default = 500ms).
+//                     This parameter is optional.
+//CallBackOKLongPress : This callback will give you the same values than the first one
+//                     but it will be triggered as soon as the Long press is taken
+//                     into account ( at this moment, value = DOWN because you are still
+//                     holding down the button). This permits for instance to lit up a light indicating
+//                     the user that he/she can release the button. This callback occurs before the first one.
+//                     This parameter is optional.
+//Like that, you can decide to put the code for the long press in either callback function
+BehringerCMDPL1.LongShortBtn = function(Callback, LongPressThreshold, CallBackOKLongPress) {
+    var myself = this;
+    this.Callback = Callback;
+    this.channel = 0;
+    this.control = 0; 
+    this.value = 0;
+    this.status = 0;
+    this.group = "";
+    this.CallBackOKLongPress = CallBackOKLongPress;
+    if (LongPressThreshold) {
+        this.LongPressThreshold = LongPressThreshold;
+    } else {
+        //Sets a default value of 500 ms
+        this.LongPressThreshold = 500;
+    }
+
+    this.ButtonLongPress = false;
+    this.ButtonLongPressTimer = 0;
+
+    // Timer's call back for long press
+    this.ButtonAssertLongPress = function() {
+        this.ButtonLongPress = true;
+        //the timer was stopped, we set it to zero
+        this.ButtonLongPressTimer = 0;
+        // let's take action of the long press
+        // Make sure the callback is a function and exist
+        if (typeof callback === "function") {
+            // Call it, since we have confirmed it is callable
+            this.CallBackOKLongPress(this.channel, this.control, this.value, this.status, this.group, LONG_PRESS);
+        }
+    };
+
+    this.ButtonDown = function(channel, control, value, status, group) {
+        this.channel = channel;
+        this.control = control; 
+        this.value = value;
+        this.status = status;
+        this.group = group;
+      this.ButtonLongPress = false;
+        this.ButtonLongPressTimer = engine.beginTimer(this.LongPressThreshold, function(){ myself.ButtonAssertLongPress(); }, true);
+    };
+
+    this.ButtonUp = function() {
+        if (this.ButtonLongPressTimer !== 0) {
+            engine.stopTimer(this.ButtonLongPressTimer);
+            this.ButtonLongPressTimer = 0;
+        }
+      if (this.ButtonLongPress) {
+            this.Callback(this.channel, this.control, this.value, this.status, this.group, LONG_PRESS);
+        } else {
+            this.Callback(this.channel, this.control, this.value, this.status, this.group, QUICK_PRESS);
+        }
+    };
+};
+
 
 // ************************ Initialisation stuff. *****************************
 
@@ -52,7 +135,9 @@ BehringerCMDPL1.Scale = function(value, baseMin, baseMax, limitMin, limitMax) {
     return ((limitMax - limitMin) * (value - baseMin) / (baseMax - baseMin)) + limitMin;
 }
 
-BehringerCMDPL1.HandleHotcue = function (channel, control, value, status, group) {
+// Handle HotCue
+
+BehringerCMDPL1.HandleHotcueShort = function (channel, control, value, status, group, longpress) {
     switch (control) {
         case 0x10:
             hotcue = "hotcue_1";
@@ -69,11 +154,40 @@ BehringerCMDPL1.HandleHotcue = function (channel, control, value, status, group)
     }
     // If hotcue enabled, goto, else set?
     if (engine.getParameter("[Channel" + (channel+1) + "]", hotcue + "_enabled")) {
-        engine.setParameter("[Channel" + (channel+1) + "]", hotcue + "_goto", 1);
+        if (longpress == QUICK_PRESS) {
+            engine.setParameter("[Channel" + (channel+1) + "]", hotcue + "_goto", 1);
+        } else {
+            engine.setParameter("[Channel" + (channel+1) + "]", hotcue + "_clear", 1);
+        }
     } else {
         engine.setParameter("[Channel" + (channel+1) + "]", hotcue + "_set", 1);
     }
 }
+
+BehringerCMDPL1.HandleHotcueControl = new BehringerCMDPL1.LongShortBtn(BehringerCMDPL1.HandleHotcueShort, 500);
+
+BehringerCMDPL1.HandleHotcue = function(channel, control, value, status, group) {
+    if (value == DOWN) {
+        //**************************************************************
+        //If you want to make the button led to lit up when you prees the button
+        //you can put your code here for instance.
+        //example (see snippet about lights) :
+        //**************************************************************
+        //MyController.MyLed1.onOff(ON);
+
+        //Then you call ButtonDown with the parameters
+        BehringerCMDPL1.HandleHotcueControl.ButtonDown(channel, control, value, status, group);
+    } else {
+        //**************************************************************
+        //Example of using the button led :
+        //**************************************************************
+        //MyController.MyLed1.onOff(OFF);
+
+        //Then you call ButtonUp()  without any parameter
+        BehringerCMDPL1.HandleHotcueControl.ButtonUp();
+    }
+};
+
 
 BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status, group) {
     Channel = 0x90 + BaseChannel + channel;
@@ -228,80 +342,3 @@ BehringerCMDPL1.shutdown = function () {
 };
 
 
-// Monitor for Short / Long Presses
-// From: https://www.mixxx.org/forums/viewtopic.php?f=7&t=7681
-
-var QUICK_PRESS = 1;
-var DOUBLE_PRESS = 2;
-var LONG_PRESS = 3;
-
-// =======================  LongShortBtn   
-//Callback           : Callback function you have to provide (see end of the code), that will return
-//                     the original event parameters (channel, control, value, status, group)
-//                     and the kind of press event affecting your button (eventkind)
-//                     This callback will be called once you release the button
-//                     (Value will be equal to UP). You must provide this parameter.
-//LongPressThreshold : delay in ms above which a firts press on the
-//                     button will be considered as a Long press (default = 500ms).
-//                     This parameter is optional.
-//CallBackOKLongPress : This callback will give you the same values than the first one
-//                     but it will be triggered as soon as the Long press is taken
-//                     into account ( at this moment, value = DOWN because you are still
-//                     holding down the button). This permits for instance to lit up a light indicating
-//                     the user that he/she can release the button. This callback occurs before the first one.
-//                     This parameter is optional.
-//Like that, you can decide to put the code for the long press in either callback function
-BehringerCMDPL1.LongShortBtn = function(Callback, LongPressThreshold, CallBackOKLongPress) {
-    var myself = this;
-    this.Callback = Callback;
-    this.channel = 0;
-    this.control = 0; 
-    this.value = 0;
-    this.status = 0;
-    this.group = "";
-    this.CallBackOKLongPress = CallBackOKLongPress;
-    if (LongPressThreshold) {
-        this.LongPressThreshold = LongPressThreshold;
-    } else {
-        //Sets a default value of 500 ms
-        this.LongPressThreshold = 500;
-    }
-
-    this.ButtonLongPress = false;
-    this.ButtonLongPressTimer = 0;
-
-    // Timer's call back for long press
-    this.ButtonAssertLongPress = function() {
-        this.ButtonLongPress = true;
-        //the timer was stopped, we set it to zero
-        this.ButtonLongPressTimer = 0;
-        // let's take action of the long press
-        // Make sure the callback is a functionâ€ and exist
-        if (typeof callback === "function") {
-            // Call it, since we have confirmed it is callableâ€
-            this.CallBackOKLongPress(this.channel, this.control, this.value, this.status, this.group, LONG_PRESS);
-        }
-    };
-
-    this.ButtonDown = function(channel, control, value, status, group) {
-        this.channel = channel;
-        this.control = control; 
-        this.value = value;
-        this.status = status;
-        this.group = group;
-      this.ButtonLongPress = false;
-        this.ButtonLongPressTimer = engine.beginTimer(this.LongPressThreshold, function(){ myself.ButtonAssertLongPress(); }, true);
-    };
-
-    this.ButtonUp = function() {
-        if (this.ButtonLongPressTimer !== 0) {
-            engine.stopTimer(this.ButtonLongPressTimer);
-            this.ButtonLongPressTimer = 0;
-        }
-      if (this.ButtonLongPress) {
-            this.Callback(this.channel, this.control, this.value, this.status, this.group, LONG_PRESS);
-        } else {
-            this.Callback(this.channel, this.control, this.value, this.status, this.group, QUICK_PRESS);
-        }
-    };
-};
