@@ -142,6 +142,15 @@ BehringerCMDPL1.IndicatorUpdate = function (value, group, control) {
         case "hotcue_1_enabled":
             Button = 0x10;
             break;
+        case "hotcue_2_enabled":
+            Button = 0x11;
+            break;
+        case "hotcue_3_enabled":
+            Button = 0x12;
+            break;
+        case "hotcue_4_enabled":
+            Button = 0x13;
+            break;
     }
     // Send the message
     midi.sendShortMsg(Channel, Button, value);
@@ -198,23 +207,15 @@ BehringerCMDPL1.ResetLEDs = function () {
 }
 
 BehringerCMDPL1.init = function () {
-    engine.connectControl("[Channel1]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
-    engine.connectControl("[Channel2]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
-    engine.connectControl("[Channel3]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
-    engine.connectControl("[Channel4]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
-
-    engine.connectControl("[Channel1]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
-    engine.connectControl("[Channel2]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
-    engine.connectControl("[Channel3]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
-    engine.connectControl("[Channel4]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
-
-    engine.connectControl("[Channel1]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
-    engine.connectControl("[Channel2]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
-    engine.connectControl("[Channel3]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
-    engine.connectControl("[Channel4]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
-
-    engine.connectControl("[Channel1]", "hotcue_1_enabled", "BehringerCMDPL1.IndicatorUpdate");
-
+    for (Channel=1; Channel <= 4; Channel++) {
+        engine.connectControl("[Channel" + Channel + "]", "cue_indicator", "BehringerCMDPL1.IndicatorUpdate");
+        engine.connectControl("[Channel" + Channel + "]", "play_indicator", "BehringerCMDPL1.IndicatorUpdate");
+        engine.connectControl("[Channel" + Channel + "]", "rate", "BehringerCMDPL1.RateIndicatorUpdate");
+        engine.connectControl("[Channel" + Channel + "]", "hotcue_1_enabled", "BehringerCMDPL1.IndicatorUpdate");
+        engine.connectControl("[Channel" + Channel + "]", "hotcue_2_enabled", "BehringerCMDPL1.IndicatorUpdate");
+        engine.connectControl("[Channel" + Channel + "]", "hotcue_3_enabled", "BehringerCMDPL1.IndicatorUpdate");
+        engine.connectControl("[Channel" + Channel + "]", "hotcue_4_enabled", "BehringerCMDPL1.IndicatorUpdate");
+    }
 
     // Initialise anything that might not be in the correct state.
     BehringerCMDPL1.initLEDs();
