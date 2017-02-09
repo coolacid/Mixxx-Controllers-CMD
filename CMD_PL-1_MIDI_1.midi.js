@@ -22,6 +22,7 @@ Button_Scratch = 0x1B;
 
 // Internal Verables
 Button_Scratching = false
+DelayScratch = false
 
 // ************************ Initialisation stuff. *****************************
 
@@ -74,6 +75,8 @@ BehringerCMDPL1.HandleScratchButton = function (channel, control, value, status,
             engine.scratchEnable(channel+1, 128, 33+1/3, alpha, beta, false);
             midi.sendShortMsg(Channel, Button_Scratch, 0x01);
         } else if (status & 0x80) {
+            DelayScratch = true
+            engine.beginTimer(1000, function() { DelayScratch = false}, true);
             engine.scratchDisable(channel+1, false);
             midi.sendShortMsg(Channel, Button_Scratch, 0x00);
         }
@@ -90,7 +93,9 @@ BehringerCMDPL1.HandleDisk = function (channel, control, value, status, group) {
     if (engine.isScratching(channel+1)) {
         engine.scratchTick(channel+1, CorrectedValue); // Scratch!
     } else {
-        engine.setValue('[Channel'+(channel+1)+']', 'jog', CorrectedValue); // Pitch bend
+        if (!DelayScratch) {
+            engine.setValue('[Channel'+(channel+1)+']', 'jog', CorrectedValue); // Pitch bend
+        }
     }
 }
 
